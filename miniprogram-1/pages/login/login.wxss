@@ -1,0 +1,34 @@
+/* pages/login/login.wxss */
+/**图片**/
+.user-face{
+  width: 128rpx;
+  height: 128rpx;
+}
+/**字体**/
+.font-01{
+  font-size: 14px;
+  font-weight: bold;
+  line-height: 40px;   /**设置字体垂直居中**/
+}
+.font-02{
+  font-size: 18px;
+  font-weight: bold;
+  margin-top: 60px;
+}
+/**边框**/
+.font-border{
+  border: 2px solid #405f80;
+  border-radius:5px;
+  text-align: center;  /**水平居中，搭配字体垂直居中，使字体可以在边框中居中显示**/
+  width: 100px;
+  height: 40px;
+  margin-top: 20px;
+  margin-bottom: 15px;
+}
+
+/**将整个页面大模块page进行拉伸到100%，就会使里边所有控件也进行拉伸，自动出现分割效果
+  所以先尝试不使用height: 100%;进行拉伸，看一看背景是否可以，如果可以就不使用拉伸效果
+**/
+Page{
+  background-color: #00F5FF;
+}

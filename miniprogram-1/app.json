@@ -1,0 +1,9 @@
+{
+  "pages": [
+    "pages/login/login"
+  ],
+  "window": {
+    "navigationBarBackgroundColor": "#00F5FF"
+  },
+  "sitemapLocation": "sitemap.json"
+}

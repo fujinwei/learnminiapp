@@ -1,0 +1,10 @@
+/**app.wxss**/
+.container {
+  height: 100%;
+  display: flex;
+  flex-direction: column;   /**flex弹性盒子,指定排列方向，可以自动对程序内容进行列垂直排序**/
+  align-items: center;     /**设置全局居中**/
+  justify-content: space-between;
+  padding: 200rpx 0;
+  box-sizing: border-box;
+} 
