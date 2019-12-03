@@ -1,0 +1,37 @@
+<!--pages/index/index.wxml-->
+<view>
+<!-- 轮播图 -->
+    <swiper class="banner" indicator-dots="true" autoplay="true" circular="true">
+        <swiper-item>
+            <image style="width:100%"  src="/images/lunbo1.jpg"></image>
+        </swiper-item>
+        <swiper-item>
+            <image style="width:100%" src="/images/lunbo2.jpg"></image>
+        </swiper-item>
+        <swiper-item>
+            <image style="width:100%" src="/images/lunbo3.jpg"></image>
+        </swiper-item>
+    </swiper>
+    <!-- 新闻列表 -->
+    <block wx:key="11" wx:for="{{post_key}}"  wx:for-item="item">   <!--循环列表输出  -->
+    <view class="zhu">
+    <view class="faceview">
+        <image class="face" src="{{item.face}}"></image>
+        <text class="date">{{item.date}}</text>
+    </view>
+    <view>
+        <text class="title-text">{{item.title}}</text>
+        <image class="imag-big"  src="{{item.contentimg}}"></image>
+    </view>
+    <view>
+        <text class="text-content">{{item.content}}</text>
+    </view>
+    <view>
+      <image class="icon" src="/images/icon/chat.png"></image>
+      <text class="text-icon">12</text>
+      <image class="icon" src="/images/icon/view.png"></image>
+      <text class="text-icon">1111</text>
+    </view>
+    </view>
+    </block>
+</view>

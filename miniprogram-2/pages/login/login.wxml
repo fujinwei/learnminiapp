@@ -1,0 +1,8 @@
+<!--pages/login/login.wxml-->
+<view class="container ">
+<image class="user-face" src="/images/xiaoface.png"></image>
+<view class="font-border" bind:tap="onTap"><!--bind:tap 定义回调函数onTap，用于跳转 -->
+    <text class="font-01">Hello,近日点</text>
+</view>
+<text class="font-02" >欢迎来到这里，这里是My World</text>
+</view>

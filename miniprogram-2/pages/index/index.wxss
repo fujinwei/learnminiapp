@@ -1,0 +1,54 @@
+/* pages/index/index.wxss */
+.banner{
+  height: 340rpx
+}
+.zhu{
+  margin-top: 10px;
+  margin-bottom: 15px;
+  display: flex;
+  flex-direction: column;
+  background-color: #fff;
+  border-top:1px solid #ededed;
+  border-bottom:1px solid #ededed;
+}
+/* 头像 */
+.face{
+  height: 60rpx;
+  width: 60rpx
+}
+/* 日期行容器 */
+.faceview{
+  display: flex;
+  flex-direction: row;    /*横向排序，纵向排序为column*/
+   align-items: center;  /*内部子元素居中对齐 */
+}
+/* 日期 */
+.date{
+  margin-left: 10px;
+  font-size: 14px
+}
+/* 标题 */
+.title-text{
+  font-size: 18px;
+  font-weight: bold;   /* 加粗 */
+  margin-left: 7px
+}
+/* 大图 */
+.imag-big{
+  width: 100%;
+  height: 300rpx
+}
+/* 文章主页内容 */
+.text-content{
+  font-size: 14px;
+}
+.icon{
+  width: 30rpx;
+  height: 30rpx;
+  margin-top: 7px;
+}
+.text-icon{
+  font-size: 10px;
+  letter-spacing: 4rpx;   /*字间距*/
+  margin-right: 35rpx
+}
