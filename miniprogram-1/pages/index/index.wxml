@@ -1,0 +1,25 @@
+<!--pages/index/index.wxml-->
+<!--引用模板页面-->
+<import src="../templateeho/template.wxml"/>
+<view>
+<!-- 轮播图 -->
+    <swiper class="banner" indicator-dots="true" autoplay="true" circular="true">
+        <swiper-item>
+            <image style="width:100%"  src="/images/lunbo1.jpg"></image>
+        </swiper-item>
+        <swiper-item>
+            <image style="width:100%" src="/images/lunbo2.jpg"></image>
+        </swiper-item>
+        <swiper-item>
+            <image style="width:100%" src="/images/lunbo3.jpg"></image>
+        </swiper-item>
+    </swiper>
+    <!-- 新闻列表 -->
+    
+    <block wx:key="11" wx:for="{{post_key}}"  wx:for-item="item">   <!--循环列表输出  -->
+      <view catchtap="listItem" data-postid="{{item.postid}}">
+        <template is="indexItem" data="{{...item}}"></template>
+      </view>    
+    </block>
+    
+</view>

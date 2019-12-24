@@ -1,0 +1,94 @@
+/* pages/detailspage/detailspage.wxss */
+
+.conter{
+  display: flex;
+  flex-direction: column; /*横向排序，纵向排序为column*/
+}
+
+/*图片融合样式*/
+.music{
+  position: absolute; /*绝对定位*/
+  opacity: 0.6; /*透明度*/
+  left: 50%; /*居中经典样式*/
+  margin-top: 20%;
+  margin-left: -45rpx;
+  height: 150rpx;
+  width: 150rpx;
+}
+.author-data{
+  margin-top: 20rpx;
+  margin-left: 30rpx;
+  flex-direction: row;
+}
+/*头像*/
+.face{
+  width: 60rpx;
+  height: 60rpx;
+ vertical-align: middle;
+}
+/*作者*/
+.writer{
+  font-size: 30rpx;
+  font-weight: 300;
+  margin-left: 20rpx;
+  vertical-align: middle;
+  color: #666;
+}
+
+.fabiao{
+  font-size: 24rpx;
+  font-weight: 300;
+  color: #999;
+  margin-left: 20rpx;
+}
+
+.time{
+  font-size: 24rpx;
+  vertical-align: middle;
+  margin-left: 30rpx;
+  color: #999;
+}
+/*标题*/
+.title{
+  margin-left: 40rpx;
+  font-size: 36rpx;
+  font-weight: 700;
+  margin-top: 2px;
+  color: #4b556c;
+}
+
+.tool{
+  margin-top: 20rpx;
+}
+.circle-img{
+  float: right; /*浮动*/
+  margin-right: 40rpx;
+  vertical-align: middle;
+}
+/*circle-img下边所有Image都可以使用该属性*/
+.circle-img Image{
+  width: 90rpx;
+  height: 90rpx;
+}
+/*右边没给样式，只给一个距左边距也可以的*/
+.share-img{
+  margin-left: 30rpx;
+}
+/*直线*/
+.rule{
+  width: 666rpx;
+  height: 2px;
+  background-color: #e5e5e5;
+  vertical-align: middle;
+  position: relative; /*脱离文档*/
+  top: 46rpx; /*拒顶部*/
+  margin: 0 auto;
+  z-index: -99; /*和另外两个图片重叠*/
+}
+/*正文*/
+.detail{
+  color: #666;
+  margin: 20rpx 30rpx 0 30rpx;
+  line-height: 44rpx;
+  letter-spacing: 3rpx;
+}

@@ -1,0 +1,5 @@
+/* pages/index/index.wxss */
+@import "../templateeho/template.wxss";
+.banner{
+  height: 340rpx
+}

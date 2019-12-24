@@ -1,0 +1,22 @@
+<!--代码模板文件-->
+<template name="indexItem">
+ <view class="zhu">
+    <view class="faceview">
+        <image class="face" src="{{face}}"></image>
+        <text class="date">{{date}}</text>
+    </view>
+    <view>
+        <text class="title-text">{{title}}</text>
+        <image class="imag-big"  src="{{contentimg}}"></image>
+    </view>
+    <view>
+        <text class="text-content">{{content}}</text>
+    </view>
+    <view>
+      <image class="icon" src="/images/icon/chat.png"></image>
+      <text class="text-icon">{{dianzan}}</text>
+      <image class="icon" src="/images/icon/view.png"></image>
+      <text class="text-icon">{{reading}}</text>
+    </view>
+    </view>
+</template>

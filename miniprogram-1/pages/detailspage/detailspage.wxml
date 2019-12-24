@@ -1,0 +1,24 @@
+<!--pages/detailspage/detailspage.wxml-->
+<view class="conter">
+    <image style="width:100%" src="{{postData.contentimg}}"></image>
+    <image class="music" src="/images/music/music-start.png"></image>
+<view class="author-data">
+    <image class="face" src="{{postData.face}}"></image>
+    <text class="writer">{{postData.author}}</text>
+    <text class="fabiao">发表于</text>
+    <text class="time">{{postData.dateTime}}</text>
+</view>
+<view>
+    <text class="title">{{postData.title}}</text>
+</view>
+<view class="tool">
+  <view class="circle-img">
+      <image  src="/images/icon/collection.png"></image>
+      <image class="share-img" src="/images/icon/share.png"></image>
+  </view>
+  <view class="rule"></view>
+</view  >
+<view>
+   <text class="detail">{{postData.detail}}</text>
+</view>
+</view>
