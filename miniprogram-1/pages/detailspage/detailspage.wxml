@@ -13,7 +13,10 @@
 </view>
 <view class="tool">
   <view class="circle-img">
-      <image  src="/images/icon/collection.png"></image>
+         <!--收藏之后的图片-->
+      <image wx:if="{{collected}}" catchtap="onCollected"src="/images/icon/collection.png"></image>
+      <image wx:else catchtap="onCollected" src="/images/icon/collection-anti.png" > </image>
+      
       <image class="share-img" src="/images/icon/share.png"></image>
   </view>
   <view class="rule"></view>
