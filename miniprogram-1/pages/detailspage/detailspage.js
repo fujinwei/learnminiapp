@@ -1,5 +1,7 @@
 // pages/detailspage/detailspage.js
-var newlistDB=require("/../database/newlistDB.js")
+var newlistDB=require("/../database/newlistDB.js");
+
+var app=getApp();
 
 Page({
 
@@ -7,23 +9,22 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+      musictab:false,//给音乐图标转换一个状态判断
   },
 
   /**
    * 生命周期函数--监听页面加载————————————接受传过来的ID
    */
+  //初始加载
   onLoad: function (options) {
     var postId = options.id; /*获取传过来的ID，如果使用的是id，则使用id，自定义什么就是用什么 */
-
-   this.data.currentPostId= postId;//将currentPostId的一个属性赋值给data,不能直接将ID送给data
-
+    this.data.currentPostId= postId;//将currentPostId的一个属性赋值给data,不能直接将ID送给data
     var poData = newlistDB.newslist[postId];//因为在定义数据文件的时候，定义了一个数组，所以数组文件最下方的newslist才是数组名，而newlistDB却是接受响应文件
+
   //数据绑定,将数据文件中的信息绑定到该页。
     this.setData({
       postData:poData
     });
-
 
     //获取所有缓存文件的内容
     var bothCollected = wx.getStorageSync('both_Collected');//both_Collected表示一个键
@@ -45,8 +46,38 @@ Page({
       bothCollected[postId]=false;
       wx.setStorageSync('both_Collected', bothCollected)
     }
+    //监听音乐播放是否启动
+    if(app.globalData.g_playmusic&&app.globalData.g_cumusic==postId)
+    {
+      this.setData({
+        musictab:true
+      })
+    }
+    this.setMusicor();
+    },
+
+    //监听事件
+    setMusicor:function(){
+      var that=this;
+      wx.onBackgroundAudioPlay(function(){
+        that.setData({
+          musictab:true
+        })
+        //如果音乐播放了就将全局状态变为true
+        app.globalData.g_playmusic=true;
+        app.globalData.g_cumusic=that.data.currentPostId;
+      }),
+      wx.onBackgroundAudioPause(function(){
+        that.setData({
+          musictab:false
+        })
+        app.globalData.g_playmusic=false;
+        app.globalData.g_cumusic=null;
+    })
   },
-//点击事件onCollected
+
+
+//收藏点击事件onCollected
   onCollected:function(event){
     //获取他的键值
     var bothCollected = wx.getStorageSync('both_Collected');
@@ -70,6 +101,65 @@ Page({
       title: bothpostId?'收藏成功':'取消收藏',
       duration: 500
     })
+  },
+
+  
+  //分享功能的初步实现
+  onShart:function(event){
+    var itemList=[
+      "分享到QQ",
+      "分享到微信",
+      "分享到朋友圈",
+      "分享到微博"
+    ]
+      wx.showActionSheet({
+        itemList: itemList, //必须为itemList
+        success:function(res){
+          //res.tapIndex 用户点击的数组元素序号
+          //res.cancel 用户是否点击了取消按钮
+          wx.showModal
+         ({
+            title: '此文章'+itemList[res.tapIndex],
+           // content: '用户是否取消'+res.cancel+"暂时无法实现分享",
+           success(res){
+             if(res.confirm){
+                  wx.showToast({
+                    title: '分享成功',
+                    icon: 'success',
+                    duration: 1000
+                  })
+             }else if(res.cancel){
+               wx.showToast({
+                 title: '分享失败',
+                 image: '/images/icon/center.png',
+                 duration: 1000
+               })
+             }
+           }
+          })
+        }
+      })
+  },
+//点击播放音乐按钮
+  onMusictap:function(event){
+    var musicID=this.data.currentPostId; //获取数据文件音乐ID
+      var musictab = this.data.musictab;//获取当前图标一个状态
+      var luoji = newlistDB.newslist[musicID].music;
+      if (musictab) {
+        wx.pauseBackgroundAudio();
+        this.setData({
+          musictab: false
+        })
+      } else {
+        wx.playBackgroundAudio({
+          dataUrl: luoji.url,//URL连接
+          title: luoji.title,//标题
+          coverImgUrl: luoji.coverImg//背景图
+        })
+        this.setData({
+          musictab: true
+        })
+      }
   },
   /**
    * 生命周期函数--监听页面初次渲染完成

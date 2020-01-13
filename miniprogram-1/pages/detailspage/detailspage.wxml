@@ -1,7 +1,7 @@
 <!--pages/detailspage/detailspage.wxml-->
 <view class="conter">
     <image style="width:100%" src="{{postData.contentimg}}"></image>
-    <image class="music" src="/images/music/music-start.png"></image>
+    <image catchtap="onMusictap" class="music" src="{{musictab?'/images/music/music-stop.png':'/images/music/music-start.png'}}"></image>
 <view class="author-data">
     <image class="face" src="{{postData.face}}"></image>
     <text class="writer">{{postData.author}}</text>
@@ -17,7 +17,7 @@
       <image wx:if="{{collected}}" catchtap="onCollected"src="/images/icon/collection.png"></image>
       <image wx:else catchtap="onCollected" src="/images/icon/collection-anti.png" > </image>
       
-      <image class="share-img" src="/images/icon/share.png"></image>
+      <image catchtap="onShart" class="share-img" src="/images/icon/share.png"></image>
   </view>
   <view class="rule"></view>
 </view  >
