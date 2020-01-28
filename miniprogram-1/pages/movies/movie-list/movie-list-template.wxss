@@ -1,0 +1,38 @@
+@import "../movie-template/movie-template.wxss";
+
+.movie-list{
+  display: flex;
+  flex-direction: column;
+  background-color: #fff;
+}
+/*头部对齐*/
+.inner-duiqi{
+  margin: 0 auto 20rpx;
+}
+
+.movie-top{
+  padding: 30rpx 20rpx 22rpx;
+
+}
+.slogan{
+  font-size: 24rpx;
+}
+.more{
+  /*浮动方式对齐排列*/
+  float: right;
+}
+.more-text{
+  vertical-align: middle;/*文字图片对齐*/
+  font-size: 24rpx;
+  margin-right: 10rpx;
+  color: #1f4ba5;
+}
+.more-img{
+  width: 9rpx;
+  height: 16rpx;
+  vertical-align: middle;
+}
+.template{
+  display: flex;
+  flex-direction: row;
+}

@@ -1,0 +1,12 @@
+<import src="../stars-template/stars-template.wxml"/>
+<!--影片内容list的template-->
+<template name="movieTemplate">
+  <!--电影封面图片-->
+  <view class="movie-container">
+    <image class="movie-fenmian" src="{{coverageUrl}}"></image>
+    <!--电影名称-->
+    <text class="movie-title">{{title}}</text>
+  <!--电影评分-->
+    <template is="starTemplate" data="{{stars:stars,score:average}}"/>
+  </view>
+</template>

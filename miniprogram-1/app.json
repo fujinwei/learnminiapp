@@ -1,11 +1,29 @@
 {
   "pages": [
-    "pages/login/login",
     "pages/index/index",
-    "pages/detailspage/detailspage"
+    "pages/detailspage/detailspage",
+    "pages/login/login",
+    "pages/movies/movies"
   ],
   "window": {
     "navigationBarBackgroundColor": "#00F5FF"
+  },
+  "tabBar": {
+    "list": [
+      {
+        "text": "电影",
+        "pagePath":"pages/movies/movies",
+        "iconPath":"images/tab/dianying.png",
+        "selectedIconPath":"images/tab/dianying_hl.png"
+      },
+      {
+        "text": "文章",
+        "pagePath":"pages/index/index",
+        "iconPath":"images/tab/yuedu.png",
+        "selectedIconPath":"images/tab/yuedu_hl.png"
+      }
+     
+    ]
   },
   "sitemapLocation": "sitemap.json"
 }

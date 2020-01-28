@@ -1,0 +1,13 @@
+<!--评分模板文件template-->
+<template name="starTemplate">
+	<view class="stars-container">
+		<!--星标图片-->
+		<view class="start">
+			<block wx:for="{{stars}}" wx:for-item="i">
+				<image wx:if="{{i}}" src="/images/icon/star.png"></image>
+				<image wx:else src="/images/icon/none-star.png"></image>
+			</block>
+		</view>
+		<text class="star-score">{{score}}</text>
+	</view>
+</template>
