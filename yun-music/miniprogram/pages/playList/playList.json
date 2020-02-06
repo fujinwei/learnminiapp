@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "bs-songlist":"/components/songlist/songlist"
+  },
+  "enablePullDownRefresh":true
+}

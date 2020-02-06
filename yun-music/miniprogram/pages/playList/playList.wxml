@@ -1,0 +1,13 @@
+<!--pages/playList/playList.wxml-->
+<swiper indicator-dots="true" indicator-active-color="red" autoplay="true">
+	<block wx:for="{{swiperImgUrls}}" wx:for-item="item" wx:key="url">
+		<swiper-item>
+			<image src="{{item.url}}" class="bannerImg"></image>
+		</swiper-item>
+	</block>
+</swiper>
+<view class="playlist-yangshi">
+	<block wx:for="{{playList}}" wx:for-item="item" wx:key="_id">
+		<bs-songlist playlist="{{item}}"></bs-songlist>
+	</block>
+</view>

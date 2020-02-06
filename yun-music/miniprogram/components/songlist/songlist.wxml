@@ -1,0 +1,6 @@
+<!--components/songlist/songlist.wxml-->
+<view class="playlist-yangshi">
+<image src="{{playlist.picUrl}}" class="playlist-img"></image>
+<text class="playlist-count">{{_playCount}}</text>
+<view class="playlist-name">{{playlist.name}}</view>
+</view>
