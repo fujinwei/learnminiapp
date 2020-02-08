@@ -1,0 +1,16 @@
+<!--设置背景图片居中，并cover覆盖掉容器  no-repeat不平铺-->
+<view class="player-container" style="background:url({{picUrl}}) center/cover no-repeat"></view>
+<!--遮罩层-->
+<view class="play-mask"></view>
+<!--唱片-->
+<view class="player-info">
+	<view class="player-disc">
+		<image class="player-img" src="{{picUrl}}"></image>
+	</view>
+</view>
+<!--按键-->
+<view class="player-iconfont">
+	<text class="iconfont icon-shangyishoushangyige"></text>
+	<text class="iconfont icon-bofang"></text> <!--icon-plus-pause-->
+	<text class="iconfont icon-xiayigexiayishou"></text>
+</view>

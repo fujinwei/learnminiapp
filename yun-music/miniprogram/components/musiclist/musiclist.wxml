@@ -1,0 +1,16 @@
+<block wx:for="{{musiclist}}" wx:key="id">
+<!--通过点击获取到歌曲的ID，通过ID来判断当前信息条高亮变红-->
+	<view class="musiclist-container {{item.id===playingId ? 'playing':''}} " catchtap="onSelect" data-musicid="{{item.id}}" data-index="{{index}}">
+		<view class="musiclist-index">{{index+1}}</view>
+		<!--序号-->
+		<view class="musiclist-info">
+			<view class="musiclist-name">
+				{{item.name}}
+				<text class="musiclist-alia">{{item.alia.length==0?"":item.alia[0]}}</text><!--歌曲别名判断-->
+			</view>
+			<view class="musiclist-singer">{{item.ar[0].name}}-{{item.al.name}}</view><!--歌手和专辑名-->
+		</view>
+
+	</view>
+
+</block>

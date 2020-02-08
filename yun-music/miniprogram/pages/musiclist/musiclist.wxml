@@ -1,0 +1,12 @@
+<!--背景图片-->
+<view class="detail-container" style="background:url({{listInfo.coverImgUrl}}) no-repeat top/cover"></view>
+<!--背景深色效果-->
+<view class="detail-mask"></view>
+<view class="detail-info">
+  <image src="{{listInfo.coverImgUrl}}" class="detail-img"></image>
+  <view class="detail">
+    <view class="detail-nm">{{listInfo.name}}</view>
+  </view>
+</view>
+<!--循环遍历歌曲内容输出，遍历过程在组件内完成-->
+<bs-musiclist musiclist="{{musiclist}}"/>

@@ -1,5 +1,5 @@
 <!--components/songlist/songlist.wxml-->
-<view class="playlist-yangshi">
+<view class="playlist-yangshi" catchtap="getMusicList">
 <image src="{{playlist.picUrl}}" class="playlist-img"></image>
 <text class="playlist-count">{{_playCount}}</text>
 <view class="playlist-name">{{playlist.name}}</view>

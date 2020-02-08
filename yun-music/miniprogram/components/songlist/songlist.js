@@ -9,7 +9,7 @@ Component({
       type: Object
     }
   },
-  //组件的数据监听
+  //组件的数据监听（播放数量），2表示小数点后保留两位
   observers: {
       ['playlist.playCount'](event){
         this._tranNumber(event,2);
@@ -44,6 +44,12 @@ Component({
         var decimal=number.substring(number.length-8,number.length-8+point);
         return parseFloat(parseInt(num/100000000)+'.'+decimal)+"亿"
       }
+    },
+    //点击事件
+    getMusicList:function(event){
+      wx.navigateTo({
+        url: `../musiclist/musiclist?playlistId=${this.properties.playlist.id}`,
+      })
     }
       
   }

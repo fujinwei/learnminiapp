@@ -13,7 +13,7 @@ Page({
     }, {
       url: 'http://p1.music.126.net/Yo-FjrJTQ9clkDkuUCTtUg==/109951164169441928.jpg'
     }],
-    //歌单内容，死内容
+    //歌单内容
     playList: [],
     
   },
@@ -86,7 +86,9 @@ Page({
       name:'music',
       data:{
         start:this.data.playList.length,//开始的长度
-        count:MIX_LIST
+        count:MIX_LIST,
+        $url:'playlist'
+
       }
     }).then((res)=>{
       this.setData({
