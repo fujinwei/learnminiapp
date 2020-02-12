@@ -1,0 +1,13 @@
+<view class="container">
+  <text class="time">{{showTime.currentTime}}</text><!--最左边已经播放了的时间-->
+  <view class="control">
+  <!--可移动区域  direction为可移动方向 damping阻力数值，越大滑动越慢，越小滑动越快   x设置移动的距离-->
+    <movable-area class="movable-area">
+      <movable-view direction="horizontal" class="movable-view" damping="1000" x="{{movableDis}}" bindchange="onChange" bindtouchend="onTouchEnd"/>
+    </movable-area>
+    <!--进度 stroke-width进度粗细  activeColor移动颜色 backgroundColor背景颜色  percent移动距离-->
+    <progress stroke-width="4" backgroundColor="#969696" activeColor="#cccccc" percent="{{progress}}">
+    </progress>
+  </view>
+  <text class="time">{{showTime.totalTime}}</text><!--最右边总的播放时间-->
+</view>

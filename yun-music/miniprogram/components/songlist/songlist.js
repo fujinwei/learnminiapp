@@ -1,4 +1,9 @@
 // components/songlist/songlist.js
+/*
+author:付金伟
+time:2020.2.10
+function:歌单信息显示组件
+*/
 Component({
   /**
    * 组件的属性列表
