@@ -4,15 +4,18 @@
 <view class="play-mask"></view>
 <!--唱片封面信息-->
 <view class="player-info">
-	<view class="player-disc {{isPlaying?'play':''}}">
+	<view class="player-disc {{isPlaying?'play':''}}" bindtap="onChangeLyricShow" hidden="{{isLyricShow}}">
 		<image class="player-img rotation {{isPlaying?'':'zanplay'}}" src="{{picUrl}}"></image>
 	</view>
-</view>
-<!--歌曲进度条-->
-<bs-progressbar class="bs-progressbar"  bind:musicEnd="onXia"/>
-<!--按键-->
-<view class="player-iconfont">
-	<text class="iconfont icon-shangyishoushangyige" catchtap="onShang"></text>
-	<text class="iconfont {{isPlaying?'icon-plus-pause':'icon-bofang'}}" catchtap="onTogglePlaying"></text> 
-	<text class="iconfont icon-xiayigexiayishou" catchtap="onXia"></text>
+
+	<!--歌词-->
+	<bs-lyric class="lyric" isLyricShow="{{!isLyricShow}}" bindtap="onChangeLyricShow" lyric="{{lyric}}" />
+	<!--歌曲进度条-->
+	<bs-progressbar class="bs-progressbar" bind:musicEnd="onXia" bind:timeUpdate="timeUpdate" bind:musicPlay="onPlay" bind:musicPause="onPause"  isSame="{{isSame}}"/>
+	<!--按键-->
+	<view class="player-iconfont">
+		<text class="iconfont icon-shangyishoushangyige" catchtap="onShang"></text>
+		<text class="iconfont {{isPlaying?'icon-plus-pause':'icon-bofang'}}" catchtap="onTogglePlaying"></text>
+		<text class="iconfont icon-xiayigexiayishou" catchtap="onXia"></text>
+	</view>
 </view>

@@ -41,5 +41,11 @@ app.router('musicURL',async(ctx,next)=>{
     return res
   })
 })
+//获取歌词
+app.router('lyric',async(ctx,next)=>{
+  ctx.body=await rp(URL+`/lyric?id=${event.musicId}`).then((res)=>{
+     return res
+   })
+})
   return app.serve();
 }

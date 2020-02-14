@@ -17,6 +17,14 @@ App({
       })
     }
     //设置全局属性或方法
-    this.globalData = {}
+    this.globalData = {
+      playingMusicId:-1  //当前正在播放的歌曲ID
+    }
+  },
+  setplayingMusicId(musicId){
+    this.globalData.playingMusicId=musicId
+  },
+  getplayingMusicId(){
+    return this.globalData.playingMusicId
   }
 })

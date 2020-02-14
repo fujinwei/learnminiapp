@@ -3,7 +3,7 @@ author:付金伟
 time:2020.2.10
 function:歌曲信息组件
 */
-
+const app=getApp()
 
 Component({
   /**
@@ -18,9 +18,16 @@ Component({
    * 组件的初始数据
    */
   data: {
-
+    playingId:-1
   },
-
+  //页面的生命周期
+  pageLifetimes:{
+    show(){
+      this.setData({
+        playingId:parseInt(app.getplayingMusicId()),
+      })
+    }
+  },
   /**
    * 组件的方法列表
    */

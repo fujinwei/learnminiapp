@@ -9,15 +9,18 @@ let movableAreaWidth = 0
 let movableViewWidth = 0
 //获取全局唯一的背景音频管理器
 const backgroundAudioManager = wx.getBackgroundAudioManager()
-let duration=0 //以秒为单位的总时长
+let duration = 0 //以秒为单位的总时长
 let currentSec = -1 //当前的秒数
-let isMoving=false //表示当前进度条是否在拖拽
+let isMoving = false //表示当前进度条是否在拖拽
 Component({
   /**
    * 组件的属性列表
    */
   properties: {
-
+    isSame:{
+      type:Boolean,
+      value:false
+    }
   },
 
   /**
@@ -28,12 +31,15 @@ Component({
       currentTime: '00:00', //当前已播放时间
       totalTime: '00:00' //总的时长
     },
-    movableDis: 0,//移动距离
-    progress: 0,//当前播放的进度
+    movableDis: 0, //移动距离
+    progress: 0, //当前播放的进度
   },
   //开始时调用的生命周期函数
   lifetimes: {
     ready() {
+      if (this.properties.isSame==true&&this.data.showTime.totalTime=='00:00') {
+        this._setTime()
+      }
       this._getMovableDis();
       this._backgroundBGM();
     }
@@ -42,24 +48,24 @@ Component({
    * 组件的方法列表
    */
   methods: {
-    onChange(event){
+    onChange(event) {
       //判断是否是拖动产生的移动效果
-      if (event.detail.source=='touch') {
-        this.data.progress=event.detail.x/(movableAreaWidth-movableViewWidth)*100//当前移动进度
-        this.data.movableDis=event.detail.x
-        isMoving=true
+      if (event.detail.source == 'touch') {
+        this.data.progress = event.detail.x / (movableAreaWidth - movableViewWidth) * 100 //当前移动进度
+        this.data.movableDis = event.detail.x
+        isMoving = true
       }
     },
-    onTouchEnd(){
+    onTouchEnd() {
       //对应时间获取
-      const currentTimeFmt=this._dateFormat(Math.floor(backgroundAudioManager.currentTime))
+      const currentTimeFmt = this._dateFormat(Math.floor(backgroundAudioManager.currentTime))
       this.setData({
-        progress:this.data.progress,
-        movableDis:this.data.movableDis,
-        ['showTime.currentTime']:`${currentTimeFmt.min}:${currentTimeFmt.sec}`
+        progress: this.data.progress,
+        movableDis: this.data.movableDis,
+        ['showTime.currentTime']: `${currentTimeFmt.min}:${currentTimeFmt.sec}`
       })
-      backgroundAudioManager.seek(duration*this.data.progress/100)
-      isMoving=false //拖动结束
+      backgroundAudioManager.seek(duration * this.data.progress / 100)
+      isMoving = false //拖动结束
     },
 
 
@@ -79,13 +85,14 @@ Component({
     //获取背景音乐
     _backgroundBGM() {
       backgroundAudioManager.onPlay(() => {
-          isMoving=false
+        isMoving = false
+        this.triggerEvent('musicPlay')
       })
       backgroundAudioManager.onStop(() => { //停止
 
       })
       backgroundAudioManager.onPause(() => { //暂停
-
+        this.triggerEvent('musicPause')
       })
       backgroundAudioManager.onWaiting(() => { //监听当前音频，正在加载当中
 
@@ -102,10 +109,10 @@ Component({
       })
       backgroundAudioManager.onTimeUpdate(() => { //监听当前音乐的播放进度，只在前台播放时运行
         if (!isMoving) {
-          const currentTime = backgroundAudioManager.currentTime;
+          const currentTime = backgroundAudioManager.currentTime; //对应歌词的信息
           const duration = backgroundAudioManager.duration;
-          const sec=currentTime.toString().split('.')[0]
-          if ( sec!= currentSec) {
+          const sec = currentTime.toString().split('.')[0]
+          if (sec != currentSec) {
             const currentTimeFmt = this._dateFormat(currentTime) //格式转化
             this.setData({
               movableDis: (movableAreaWidth - movableViewWidth) * currentTime / duration,
@@ -113,12 +120,16 @@ Component({
               ['showTime.currentTime']: `${currentTimeFmt.min}:${currentTimeFmt.sec}`
             })
           }
-            currentSec=sec
+          currentSec = sec
+          //联动歌词，抛出以秒为单位的currentTime（通过triggerEvent自定义事件将时间传递出去）
+          this.triggerEvent('timeUpdate',{
+            currentTime
+          })
         }
-       
+
       })
       backgroundAudioManager.onEnded(() => { //监听结束时的状态
-          this.triggerEvent('musicEnd')//触发一个事件
+        this.triggerEvent('musicEnd') //触发一个事件
       })
       backgroundAudioManager.onError(() => { //监听当前音乐播放错误时的转态
         wx.showToast({
