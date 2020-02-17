@@ -1,2 +1,16 @@
-<!--pages/blog/blog.wxml-->
-<text>pages/blog/blog.wxml</text>
+<view class="container">
+	<!--顶部头部-->
+	<view class="header">
+		<view class="publish-container" bindtap="onRelease">
+			<i class="iconfont icon-fabu"></i>
+		</view>
+		<view class="search-container">
+			<bs-search  icon-sousuo="icon-sousuo" iconfont="iconfont"/>
+		</view>
+	</view>
+	
+	<!--底部弹出层-->
+<bs-login-souquan modalShow="{{modalShow}}" bind:loginsuccess="onLoginSuccess" bind:loginfail="onLoginFail">
+</bs-login-souquan>
+
+</view>

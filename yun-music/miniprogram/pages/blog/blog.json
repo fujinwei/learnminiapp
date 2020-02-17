@@ -1,3 +1,7 @@
 {
-  "usingComponents": {}
+  "usingComponents": {
+    "bs-search":"/components/search/search",
+    "bs-login-souquan":"/components/login-souquan/login-souquan"
+  },
+  "navigationBarTitleText": "部落"
 }

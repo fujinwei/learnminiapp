@@ -1,1 +1,33 @@
 /* pages/blog/blog.wxss */
+
+.container{
+
+}
+.header{
+  display: flex;
+  align-items: center;
+  padding: 0 20rpx;
+  background-color: #fff;
+  height: 100rpx;
+  position: fixed; /*固定定位*/
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 99;
+  box-sizing: border-box;/*以一个怪异模型来显示*/
+}
+
+.header .icon-fabu{
+  font-size: 48rpx;
+}
+
+.publish-container{
+  width: 68rpx;
+  height: 68rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.search-container{
+  flex:1;
+}

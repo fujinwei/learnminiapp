@@ -1,0 +1,9 @@
+<!--components/bottom-modal/bottom-modal.wxml-->
+<!--遮罩层，遮盖底部-->
+<view class="model" hidden="{{!modalShow}}">
+  <view class="panel">
+    <i class="iconfont icon-shanchuyitiao" bindtap="onClose"></i>
+    <!--slot插槽  用于承载用户的WSML的一些事件功能-->
+    <slot name="modal-content"></slot>
+  </view>
+</view>

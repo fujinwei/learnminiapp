@@ -1,0 +1,26 @@
+<!--pages/blog-edit/blog-edit.wxml-->
+<view class="container">
+	<!--文字输入框内容   auto-focus自动获取焦点-->
+	<textarea class="content" placeholder="分享你的故事..." bindinput="onInput" maxlength="140" auto-focus bindfocus="onFocus" bindblur="onBlur"></textarea>
+	<!--选择图片内容-->
+	<view class="image-list">
+		<!--显示图片-->
+		<block wx:for="{{images}}" wx:key="*this">
+			<view class="image-wrap">
+				<image class="image" src="{{item}}" mode="aspectFill"  bindtap="onChaKanImg" data-imgsrc="{{item}}"></image>
+        <i class="iconfont icon-shanchu" bind:tap="onDelect"data-index="{{index}}"></i>
+			</view>
+		</block>
+		<!--选择图片-->
+		<view class="image-wrap selectphoto" hidden="{{!isPhote}}" bind:tap="onChooseImage">
+			<i class="iconfont icon-ziyuan" />
+		</view>
+	</view>
+</view>
+
+<view class="footer" style="bottom:{{footerBottom}}px">
+	<!--统计字数-->
+	<text class="words-num">{{wordsNum}}</text>
+
+	<button class="send-btn" bindtap="send">发布</button>
+</view>

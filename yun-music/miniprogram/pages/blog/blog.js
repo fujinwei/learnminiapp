@@ -5,9 +5,47 @@ Page({
    * 页面的初始数据
    */
   data: {
+    //控制底部弹出层是否显示
+    modalShow: false
+  },
+  //发布功能的事件
+  onRelease() {
+    this.setData({
+      modalShow: true
+    })
+    //判断用户是否授权
+    wx.getSetting({
+      success: (res) => {
+        if (res.authSetting['scope.userInfo']) {
+          wx.getUserInfo({
+            success: (res) => {
+              this.onLoginSuccess({
+                detail: res.userInfo
+              })
+            }
+          })
+        } else {
+          this.setData({
+            modalShow: true
+          })
+        }
+      }
+    })
+  },
+  //授权成功，获取用户信息
+  onLoginSuccess(event) {
+    const detail = event.detail;
+    //授权成功，挑战界面
+    wx.navigateTo({
+      url: `/pages/blog-edit/blog-edit?nickName=${detail.nickName}&avatarUrl=${detail.avatarUrl}`,
+    })
+  },
+  onLoginFail() {
+    wx.showModal({
+      title: "授权用户才可发布"
+    })
 
   },
-
   /**
    * 生命周期函数--监听页面加载
    */

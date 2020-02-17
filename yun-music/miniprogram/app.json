@@ -1,10 +1,12 @@
 {
   "pages": [
-    "pages/playList/playList",
     "pages/blog/blog",
+    "pages/playList/playList",
+    
     "pages/profile/profile",
     "pages/musiclist/musiclist",
-    "pages/player/player"
+    "pages/player/player",
+    "pages/blog-edit/blog-edit"
     
   ],
   "window": {
