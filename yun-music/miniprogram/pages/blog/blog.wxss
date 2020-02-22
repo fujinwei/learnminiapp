@@ -31,3 +31,12 @@
 .search-container{
   flex:1;
 }
+
+/*博客卡片样式*/
+.blog-list{
+  margin-top: 120rpx;
+}
+.blog-panel{
+  margin-bottom: 20rpx;
+  box-sizing: border-box;
+}

@@ -28,7 +28,7 @@ Component({
         })
         this.triggerEvent('loginsuccess',userInfo)
       }else{
-        this.triggerEvent('loginfail',)
+        this.triggerEvent('loginfail')
       }
     }
   }

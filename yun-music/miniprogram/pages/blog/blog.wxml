@@ -5,12 +5,20 @@
 			<i class="iconfont icon-fabu"></i>
 		</view>
 		<view class="search-container">
-			<bs-search  icon-sousuo="icon-sousuo" iconfont="iconfont"/>
+			<bs-search icon-sousuo="icon-sousuo" iconfont="iconfont" bind:search="onSearch" />
 		</view>
 	</view>
-	
+	<!--博客卡片列表-->
+	<view class="blog-list">
+		<block wx:for="{{bloglists}}" wx:key="_id">
+			<view class="blog-panel">
+				<bs-blog-card data-blogid="{{item._id}}" blog="{{item}}" catch:tap="gocomment" />
+				<bs-blog-ctrl blogId="{{item._id}}" iconfont="iconfont" icon-pinglun="icon-pinglun" icon-fenxiang="icon-fenxiang" blog="{{item}}"/>
+			</view>
+		</block>
+	</view>
 	<!--底部弹出层-->
-<bs-login-souquan modalShow="{{modalShow}}" bind:loginsuccess="onLoginSuccess" bind:loginfail="onLoginFail">
-</bs-login-souquan>
+	<bs-login-souquan modalShow="{{modalShow}}" bind:loginsuccess="onLoginSuccess" bind:loginfail="onLoginFail">
+	</bs-login-souquan>
 
 </view>

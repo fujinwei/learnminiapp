@@ -4,6 +4,7 @@ author:付金伟
 time:2020.2.15
 function:部落搜索组件
 */
+let keyword='' //搜索关键字
 Component({
   /**
    * 组件的属性列表
@@ -31,6 +32,15 @@ Component({
    * 组件的方法列表
    */
   methods: {
-
+    //获取用户输入
+    onInput(event){
+      keyword=event.detail.value
+    },
+    //搜索
+    onSearch(){
+     this.triggerEvent('search',{
+       keyword
+     })
+    }
   }
 })

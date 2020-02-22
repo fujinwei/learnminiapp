@@ -1,0 +1,23 @@
+<view class="ctrl">
+	<view class="ctrl-item" catch:tap="onComment">
+		<i class="iconfont icon-pinglun icon"></i>
+		<text>评论</text>
+	</view>
+	<view class="ctrl-item share">
+		<button  open-type="share" data-blogId="{{blogId}}" data-blog="{{blog}}" class="share-btn" hover-class="share-hover">
+			<i class="iconfont icon-fenxiang icon"></i>
+			<text>分享</text>
+		</button>
+	</view>
+</view>
+
+<bs-login-souquan modalShow="{{loginShow}}" bind:loginsuccess="onloginsuccess" bind:loginfail="onloginfail" />
+
+<bs-bottom-modal modalShow="{{modalShow}}">
+	<view slot="modal-content">
+		<!--value中为获取的输入的值  placeholder为占位符-->
+		<textarea name="content" class="comment-content" maxlength="20" placeholder="写评论" bindinput="onInput" fixed="true">
+    </textarea>
+		<button class="send" bind:tap="onSend" style="width:80px;height:30px">发送</button>
+	</view>
+</bs-bottom-modal>

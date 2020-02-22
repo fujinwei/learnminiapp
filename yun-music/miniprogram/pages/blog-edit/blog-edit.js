@@ -95,6 +95,7 @@ Page({
     }
     wx.showToast({
       title:'发布中',
+      mask:true,//产生一个蒙版，遮挡住用户的发布中下边的内容
     })
     let promiseArr = []
     let fileIDs=[]  //存放图片数据ID
@@ -134,6 +135,9 @@ Page({
         })
         //返回主页并刷新
         wx.navigateBack()
+        const pages=getCurrentPages()//通过getCurrentPages取到小程序的界面
+        const pagePre=pages[pages.length-2]//取到上一个界面
+        pagePre.onPullDownRefresh() //调用上一页面的方法
       })
     }).catch((err)=>{
       wx.showToast({

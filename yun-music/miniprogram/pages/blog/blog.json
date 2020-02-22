@@ -1,7 +1,10 @@
 {
   "usingComponents": {
     "bs-search":"/components/search/search",
-    "bs-login-souquan":"/components/login-souquan/login-souquan"
+    "bs-login-souquan":"/components/login-souquan/login-souquan",
+    "bs-blog-card":"/components/blog-card/blog-card",
+    "bs-blog-ctrl":"/components/blog-ctrl/blog-ctrl"
   },
-  "navigationBarTitleText": "部落"
+  "navigationBarTitleText": "部落",
+  "enablePullDownRefresh":true  
 }

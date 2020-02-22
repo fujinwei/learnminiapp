@@ -1,0 +1,7 @@
+{
+  "component": true,
+  "usingComponents": {
+    "bs-login-souquan":"../login-souquan/login-souquan",
+    "bs-bottom-modal":"/components/bottom-modal/bottom-modal"
+  }
+}

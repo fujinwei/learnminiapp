@@ -1,0 +1,18 @@
+<view class="blog">
+	<view class="blog-title">
+		<image class="blog-protrait" src="{{blog.avatarUrl}}"></image>
+		<!--头像-->
+		<view class="blog-box">
+			<view>{{blog.nickName}}</view>
+			<!--发布者-->
+			<view class="blog-time">{{_createTime}}</view>
+			<!--发布时间-->
+		</view>
+	</view>
+	<view class="blog-content">{{blog.content}}</view>
+	<view class="blog-img">
+		<block wx:for="{{blog.img}}" wx:key="{{index}}">
+			<image class="img" src="{{item}}" mode="aspectFill" catch:tap="onyulan" data-imgsrc="{{item}}" data-imgs="{{blog.img}}"></image>
+		</block>
+	</view>
+</view>
