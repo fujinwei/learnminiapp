@@ -1,4 +1,10 @@
-// pages/player/player.js
+/*
+author:付金伟
+time:2020.2.10
+function:播放歌曲界面
+*/
+
+// 正在播放歌单的数组
 let musiclist = []
 //正在播放中的index索引的值
 let PlayingIndex = 0
@@ -71,11 +77,14 @@ Page({
       }
 
       if (!this.data.isSame) {
-        backgroundAudioManager.src = result.data[0].url
+        backgroundAudioManager.src = result.data[0].url//播放历史
         backgroundAudioManager.title = music.name
         backgroundAudioManager.coverImgUrl = music.al.picUrl
         backgroundAudioManager.singer = music.ar[0].name
         backgroundAudioManager.epname = music.name
+
+        //保存播放历史
+        this.savaPlayHistory()
       }
 
       //如果开始播放，给isplaying改变一个状态
@@ -152,5 +161,32 @@ Page({
     this.setData({
       isPlaying: false
     })
+  },
+
+
+
+  //保存播放历史
+  savaPlayHistory(){
+    //获取到正在播放的歌曲
+    const music=musiclist[PlayingIndex]
+    //获取到全局openid
+    const openid=app.globalData.openid
+    const history=wx.getStorageSync(openid)//将当前播放歌曲放进历史数组中
+    //检查是否在历史中已经存在
+    let bHave=false //当前歌曲是否存在的标志位
+    for(let i=0,len=history.length;i<len;i++)
+    {
+      if (history[i].id==music.id) {
+        bHave=true
+        break
+      }
+    }
+    if (!bHave) {
+      history.unshift(music)
+      wx.setStorage({
+        data: history,
+        key: openid,
+      })
+    }
   }
 })

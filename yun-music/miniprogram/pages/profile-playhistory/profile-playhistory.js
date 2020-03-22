@@ -1,38 +1,36 @@
-// pages/profile/profile.js
+// pages/profile-playhistory/profile-playhistory.js
+const app=getApp()
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+    musicHistory:[]
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
-  },
-
-
-  //点击程序码的事件
-  onTwoCode(){
-    wx.showLoading({
-      title: '生成中',
+    //获取全局变量
+   const openid=app.globalData.openid
+   const playhistory=wx.getStorageSync(openid)//本地缓存的信息
+   if (playhistory.length==0) {
+     wx.showModal({
+       title:'播放历史为空',
+     })
+   }else{
+     //将播放菜单musiclist中的内容替换成最近播放的歌曲内容
+    wx.setStorage({
+      data: playhistory,
+      key: 'musiclist',
     })
-    wx.cloud.callFunction({
-      name:'getTwoCode'
-    }).then((res)=>{
-      const fileId=res.result
-      wx.previewImage({//给用户预览一个对应图片
-        urls: [fileId],
-        current:fileId
-      })
-      wx.hideLoading()
+    this.setData({
+      musicHistory:playhistory
     })
+   }
   },
-
 
   /**
    * 生命周期函数--监听页面初次渲染完成

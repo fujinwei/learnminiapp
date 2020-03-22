@@ -16,15 +16,35 @@ App({
         traceUser: true,
       })
     }
+
+    this.getOpenid() //调用函数，响应获取openid
+
+
     //设置全局属性或方法
     this.globalData = {
-      playingMusicId:-1  //当前正在播放的歌曲ID
+      playingMusicId:-1,  //当前正在播放的歌曲ID
+      openid:-1
     }
   },
+
   setplayingMusicId(musicId){
     this.globalData.playingMusicId=musicId
   },
   getplayingMusicId(){
     return this.globalData.playingMusicId
+  },
+  //返回用户的openID
+  getOpenid(){
+    wx.cloud.callFunction({
+      name:'login'
+    }).then((res)=>{
+    const openid=res.result.openid
+    this.globalData.openid=openid
+    //存放到本地存储中,先判断用户是否播放过，是否为空
+    if(wx.getStorageSync(openid)==''){
+      wx.setStorageSync(openid, [])//初始化
+    }
+    
+    })
   }
 })

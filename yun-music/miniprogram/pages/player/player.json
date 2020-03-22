@@ -2,5 +2,6 @@
   "usingComponents": {
     "bs-progressbar":"/components/progress-bar/progress-bar",
     "bs-lyric":"/components/lyric/lyric"
-  }
+  },
+  "disableScroll":true
 }

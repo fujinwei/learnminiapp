@@ -1,2 +1,35 @@
-<!--pages/profile/profile.wxml-->
-<text>pages/profile/profile.wxml</text>
+<!--头像资料-->
+<view class="profile-header">
+  <view class="avatar-url">
+    <open-data type="userAvatarUrl"></open-data>
+  </view>
+  <open-data type="userNickName" class="nickname"></open-data>
+</view>
+
+<view class="nav">
+<!--播放跳转-->
+  <view class="nav-item">
+    <navigator class="content" hover-class="none" url="/pages/profile-playhistory/profile-playhistory">
+      <i class="iconfont icon-ziyuanldpi"></i>
+      <text class="text">最近播放</text>
+      <i class="iconfont icon-xiangyou"></i>
+    </navigator>
+  </view>
+<!--博客历史-->
+  <view class="nav-item">
+    <navigator class="content" hover-class="none" url="/pages/profile-bloghistory/profile-bloghistory">
+      <i class="iconfont icon-faxian"></i>
+      <text class="text">我的发布</text>
+      <i class="iconfont icon-xiangyou"></i>
+    </navigator>
+  </view>
+<!--程序码-->
+  <view class="nav-item">
+    <view class="content" hover-class="none" bind:tap="onTwoCode">
+      <i class="iconfont icon-erweima"></i>
+      <text class="text">分享码</text>
+      <i class="iconfont icon-xiangyou"></i>
+    </view>
+  </view>
+</view>
+

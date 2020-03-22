@@ -4,9 +4,9 @@ time:2020.2.17
 function:blog控制菜单组件
 */
 import formatTime from '../../utils/formatTime.js'
-let userInfo = {}
-const db = wx.cloud.database()
-const templateId = '5LlPt7U4CNFnoje1ezPUJ9yeJcLv2LjnMdBw24ADqi8'
+let userInfo = {}   //存放用户信息
+const db = wx.cloud.database()  //初始化数据库
+const templateId = '5LlPt7U4CNFnoje1ezPUJ9yeJcLv2LjnMdBw24ADqi8'//订阅ID
 Component({
   /**
    * 组件的属性列表
@@ -30,7 +30,6 @@ Component({
   methods: {
     
     onComment() {
-      
       //判断用户是否授权
       wx.getSetting({
         success: (res) => {

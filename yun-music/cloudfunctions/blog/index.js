@@ -8,7 +8,7 @@ const TcbRouter = require('tcb-router')
 const db = cloud.database()
 
 const blogDB = db.collection('blog')
-const commentDB=db.collection('blog-comment')
+const commentDB = db.collection('blog-comment')
 
 const MAX_list = 100 //每次查询最大条数
 
@@ -38,7 +38,7 @@ exports.main = async (event, context) => {
       })
     ctx.body = blogList
   })
-//博客正文显示
+  //博客正文显示
   app.router('detail', async (ctx, next) => {
     let blogId = event.blogId
     //博客详情信息查询
@@ -48,7 +48,7 @@ exports.main = async (event, context) => {
       return res.data
     })
     //评论查询
-    const countResult =await commentDB.count()
+    const countResult = await commentDB.count()
     const total = countResult.total //评论结果
     let commentList = {
       data: []
@@ -79,5 +79,16 @@ exports.main = async (event, context) => {
 
   })
 
+
+  //查询我的博客的云函数路由
+  const wxCountext = cloud.getWXContext()
+  app.router('getBlogListByOpenid', async (ctx, next) => {
+    ctx.body = await blogDB.where({
+        _openid: wxCountext.OPENID
+      }).skip(event.start).limit(event.count)
+      .orderBy('createTime', 'desc').get().then((res) => {
+        return res.data
+      })
+  })
   return app.serve()
 }

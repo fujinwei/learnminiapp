@@ -1,37 +1,46 @@
-// pages/profile/profile.js
+// pages/profile-bloghistory/profile-bloghistory.js
+
+const MAX_LIMIT=15
+
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+    bloglist:[]
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    this._getBlogByCloud()
   },
 
 
-  //点击程序码的事件
-  onTwoCode(){
+
+  //调用云函数
+  _getBlogByCloud(){
     wx.showLoading({
-      title: '生成中',
+      title: '加载中',
     })
     wx.cloud.callFunction({
-      name:'getTwoCode'
+      name:'blog',
+      data:{
+        $url:'getBlogListByOpenid',
+        start:this.data.bloglist.length,
+        count:MAX_LIMIT
+      }
     }).then((res)=>{
-      const fileId=res.result
-      wx.previewImage({//给用户预览一个对应图片
-        urls: [fileId],
-        current:fileId
+      
+      this.setData({
+        bloglist:this.data.bloglist.concat(res.result)
       })
       wx.hideLoading()
     })
   },
+
 
 
   /**
@@ -66,14 +75,14 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
-
+    
   },
 
   /**
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function () {
-
+    this._getBlogByCloud()
   },
 
   /**

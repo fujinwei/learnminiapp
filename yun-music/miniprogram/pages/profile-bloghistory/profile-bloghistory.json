@@ -1,0 +1,7 @@
+{
+  "usingComponents": {
+    "bs-blog-card":"/components/blog-card/blog-card",
+    "bs-blog-ctrl":"/components/blog-ctrl/blog-ctrl"
+  },
+  "navigationBarTitleText": "我的发布"
+}
